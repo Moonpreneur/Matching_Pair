@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+
+@font-face {
+    font-family: vcr_font;
+    src: url(font/VCR_OSD_MONO_1.001.ttf) format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to right, rgb(49, 92, 51), rgb(44, 80, 241));
+    color: whitesmoke;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.heading {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #1976D2;
+}
+.memory-game.first-set {
+    margin: 0 auto 50px auto; 
+    width: 300px; 
+    height: 400px; 
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+    margin-bottom: 80px; 
+}
+
+.memory-card.first-set {
+    width: calc(50% - 10px); 
+    height: calc(20% - 10px); 
+    position: relative;
+    margin: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.memory-game.second-set {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin: auto;
+    width: 400px;
+    height: 600px;
+    perspective: 1000px;
+    margin-bottom: 10px;
+}
+
+.memory-card.second-set {
+    width: 100%; 
+    height: 100%; 
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.memory-card.second-set:nth-child(7) {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.frontface,
+.backface {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    backface-visibility: hidden;
+    object-fit: contain;
+}
+
+.memory-card:active {
+    transform: scale(0.97);
+    transition: transform 0.2s;
+}
+
+.memory-card.flip {
+    transform: rotateY(180deg);
+}
+
+.backface {
+    transform: rotateY(180deg);
+    color: black;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+#logo {
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 10px;
+}
+
+.title {
+    margin-top: 10px; 
+    text-align: center;
+}
+
+
+.head p:first-child {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    background-color: rgb(228, 141, 141);
+    color: black;
+    border-radius: 5px;
+    border: 2px solid #f05a5a;
+}
+
+.head p.timer {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    background-color: rgb(228, 141, 141);
+    color: black;
+    border-radius: 5px;
+    border: 2px solid #f05a5a;
+}
+
+#instructions-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.instructions-container {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px 40px;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+.instructions-container h2 {
+    margin-bottom: 20px;
+}
+
+.instructions-container p {
+    margin-bottom: 20px;
+}
+
+#start-game-button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#start-game-button:hover {
+    background-color: #45a049;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    background: rgba(255, 255, 255, 1);
+    padding: 6rem;
+    border-radius: 5px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    visibility: hidden; 
+}
+
+.modal h2 {
+    font-family: 'Amatic SC', cursive;
+    color: red;
+    font-weight: 700;
+    font-size: 45px;
+}
+
+.modal p {
+    font-family: 'Amatic SC', cursive;
+    font-weight: 700;
+    font-size: 22px;
+    color: black;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 5;
+    visibility: hidden; /* Hidden until triggered */
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 1279px) {
+    .modal {
+        width: 40%;
+        height: 30%;
+        padding: 0rem;
+    }
+    .modal h2 {
+        font-size: 40px;
+    }
+    .modal p {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 1130px) {
+    .modal h2 {
+        font-size: 25px;
+    }
+    .modal p {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 747px) {
+    .memory-game.first-set,
+    .memory-game.second-set {
+        width: 450px;
+        height: 470px;
+    }
+    .modal h2 {
+        font-size: 20px;
+    }
+    .modal p {
+        font-size: 10px;
+    }
+    .modal {
+        width: 30%;
+        height: 15%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .memory-game.first-set,
+    .memory-game.second-set {
+        width: 400px;
+        height: 420px;
+    }
+}
+
+@media only screen and (max-width: 435px) {
+    .memory-game.first-set,
+    .memory-game.second-set {
+        width: 350px;
+        height: 370px;
+    }
+
+    .modal {
+        width: 60%;
+        height: 20%;
+    }
+    .modal h2 {
+        font-size: 15px;
+    }
+    .modal p {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width: 388px) {
+    .memory-game.first-set,
+    .memory-game.second-set {
+        width: 300px;
+        height: 320px;
+    }
+}
+
+
+
+

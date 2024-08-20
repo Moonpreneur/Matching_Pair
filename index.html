@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Matching Pairs</title>
+</head>
+<body>
+    <div id="logo">
+        <img src="website-logo.png" alt="website-logo">
+    </div>
+    <div id="start-screen" class="flex-container">
+        <h1 class="heading">Matching Pairs</h1>
+        <div class="button-container">
+            <button id="how-to-play-button">How to Play</button>
+        </div>
+    </div>
+
+    <div id="instructions-screen" class="flex-container" style="display: none;">
+        <div class="instructions-container">
+            <h2>How to Play</h2>
+            <p>&bull; This is a game for one or many players. Click on a card to see what it contains. Click on a second card and if the two cards make a pair you win them.<br>
+                &bull; In the two (or more) player version a free turn is awarded to the player who finds a pair. The winner is the player who finds the most pairs.<br>
+                &bull; The option to claim a trophy is available when all of the pairs have been found. The objective is to have the fewest number of ‘clicks’ recorded on your trophy.
+            </p>
+            <p style="text-align: center; font-weight: bold;">GOOD LUCK!</p>
+            <button id="start-game-button">Start Game</button>
+        </div>
+    </div>
+
+    <div id="game-screen" class="flex-container" style="display: none;">
+        <div class="title">
+            <h1>Matching Pairs</h1>
+        </div>
+        <div class="head">
+            <p>Moves: <span class="Moves">0</span></p>
+            <p class="timer">Time: <span id="countdown">2:00</span></p>
+        </div>
+        <div class="memory-game"></div>
+        <div class="reset-button-container">
+            <button id="reset-game-button" class="restart">Reset Game</button>
+        </div>
+    </div>
+
+    <div class="modal visibility">
+        <div><h2>Congratulations</h2></div>
+        <div>
+            <p>You completed this game in <span class="move-model"></span> moves and
+                <span class="second-model"></span> seconds
+            </p>
+        </div>
+    </div>
+    <div class="modal GameOver visibility">
+        <div><h2>Game Over</h2></div>
+        <div><p>Time is over</p></div>
+    </div>
+    <div class="overlay visibility"></div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
